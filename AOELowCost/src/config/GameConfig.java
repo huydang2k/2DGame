@@ -1,6 +1,11 @@
 package config;
 
 public interface GameConfig {
+    public final static int frameWidth = 1280;
+    public final static int frameHeight = 720;
+    public final static int FPS = 60;
+    public final static int TOWN_CENTER_HP = 600;
+
     public final static int SABER_HP = 5;
     public final static int SABER_ATK = 5;
     public final static int SABER_ARMOR = 5;

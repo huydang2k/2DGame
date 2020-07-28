@@ -1,7 +1,9 @@
 package game;
 
+import config.GameConfig;
 import game.state.GameState;
 import game.state.MenuState;
+import game.state.SettingState;
 import game.state.State;
 import graphic.Assets;
 
@@ -11,6 +13,7 @@ import java.awt.image.BufferStrategy;
 public class Game implements Runnable{
 
     private Display display;
+    private int fps = GameConfig.FPS;
 
     private String title;
     private int width,height;
@@ -34,10 +37,13 @@ public class Game implements Runnable{
         this.title = title;
     }
     private void init(){
+        //Init display, assets
         display = new Display(title,width,height);
         Assets.init();
         gameState = new GameState();
         menuState = new MenuState();
+        settingState = new SettingState();
+        //just for test now
         State.setCurrentState(gameState);
     }
     private void update(){
@@ -71,7 +77,6 @@ public class Game implements Runnable{
     @Override
     public void run() {
         init();
-        int fps = 60;
         double timeForTick = 1000000000/fps;
         long now;
         long last = System.nanoTime();
@@ -90,7 +95,7 @@ public class Game implements Runnable{
                 tick++;
             }
             if (timer >= 1000000000 ){
-                System.out.println("fps="+tick);
+                System.out.println("FPS="+tick);
                 tick = 0;
                 timer = 0;
             }

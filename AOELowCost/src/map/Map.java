@@ -1,8 +1,10 @@
-package entity.army;
+package map;
+
+import entity.Entity;
 
 import java.awt.*;
 
-public class Berserker extends Soldier {
+public class Map extends Entity {
     @Override
     public void update() {
 
@@ -12,4 +14,5 @@ public class Berserker extends Soldier {
     public void render(Graphics graphics) {
 
     }
+
 }

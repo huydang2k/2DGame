@@ -1,6 +1,9 @@
 package entity.army;
 
-public abstract class Soldier {
+import entity.Entity;
+import entity.Player;
+
+public abstract class Soldier extends Entity {
     public final static int NORMAL = 0, HIT = 1, DEAD = 2;
     private int hp;
     private int damage;
@@ -9,18 +12,20 @@ public abstract class Soldier {
     private int atkSpeed;
     private int status;
     private int cost;
-    private double positionX;
-    private double positionY;
+    private int range;
+    private Player player;
     public Soldier() {
         this.status = NORMAL;
     }
 
-    public Soldier(int hp, int damage, int armor, int moveSpeed, int atkSpeed) {
+    public Soldier(int hp, int damage, int armor, int moveSpeed, int atkSpeed,int range,Player player) {
         this.hp = hp;
         this.damage = damage;
         this.armor = armor;
         this.moveSpeed = moveSpeed;
         this.atkSpeed = atkSpeed;
+        this.range = range;
+        this.player = player;
         this.status = NORMAL;
     }
     public void getAttacked(Soldier culprit){
@@ -95,19 +100,27 @@ public abstract class Soldier {
         this.cost = cost;
     }
 
-    public double getPositionX() {
+    public float getPositionX() {
         return positionX;
     }
 
-    public void setPositionX(double positionX) {
+    public void setPositionX(float positionX) {
         this.positionX = positionX;
     }
 
-    public double getPositionY() {
+    public float getPositionY() {
         return positionY;
     }
 
-    public void setPositionY(double positionY) {
+    public void setPositionY(float positionY) {
         this.positionY = positionY;
+    }
+
+    public int getRange() {
+        return range;
+    }
+
+    public void setRange(int range) {
+        this.range = range;
     }
 }
